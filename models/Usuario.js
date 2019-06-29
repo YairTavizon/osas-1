@@ -5,31 +5,48 @@ const Schema = mongoose.Schema;
 
 const Usuario = new Schema({
     nombre: {
-      required: "Este campo es requerido",
-      type: String
-    },
-    apellidos: {
-      required: "Este campo es requerido",
-      type: String
-    },
-    email: {
-      required: "Este campo es requerido",
-      type: String
-    },
+        required: "Este campo es requerido",
+        type: String
+      },
+      apellidos: {
+        required: "Este campo es requerido",
+        type: String
+      },
+      
+      avatar: {
+        required: "Este campo es requerido",
+        type: String,
+        default: '/img/proyect/customer.png'
+      },
+      email: {
+        required: "Este campo es requerido",
+        type: String
+      },
+      token: {
+        required: "Este campo es requerido",
+        type: String
+      },
+      perfil: {
+        required: "Este campo es requerido",
+        type: [String],
+        enum: ['Turista', 'Conductor', 'Jefe', 'Colaborador'],
+        default: 'Turista'
+      },
+      provider: {
+        required: "Este campo es requerido",
+        type: String,
+        default: 'local'
+      },
+      coordUsuario: {
+        type: Map,
+        of: Number
+      },
 },{
   timestamps: {
     createdAt: "created_at",
     updatedAt: "updated_at"
   }
 });
-
-/**  => perfil
-
-  Turista => Puede realizar viajes a cualquier parte de la republica y pagar sus viajes
-  Conductor => Puede realizar y armar viajes con su propio vehiculo, siendo este mismo el conductor
-  Jefe => Puede realizar y armar viajes con uno o más vehiculos, siendo este no el conductor si no un tercero
-
- */
 
 
 module.exports = mongoose.model('Usuario', Usuario );
