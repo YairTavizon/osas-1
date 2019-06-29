@@ -5,7 +5,16 @@
     <link rel='stylesheet' href='/css/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% if(content == "index") { %>
+      <%- include('./partials/burbujas/burbujas'); -%>
+    <% } %>
+
+    <% if(content == "login") { %>
+      <%- include('./partials/login/login'); -%>
+    <% } %>
+
+    <% if(content == "dash") { %>
+      <%- include('./partials/dash/dash'); -%>
+    <% } %>
   </body>
 </html>

@@ -20,6 +20,20 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+/**
+ * Create Sockert IO server.
+ */
+
+var io = require('socket.io')(server);
+/*
+  Call to io router Controller
+*/
+require('./routes.io.js')(app, io);
+
+/*
+  Call to error router Controller
+*/
+require('./routes.error.js')(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -28,6 +42,14 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+/**
+ * Listen on provided port, Sockert IO server.
+ */
+
+io.on('connection', () =>{
+  console.log('Socket.IO is running')
+})
 
 /**
  * Normalize a port into a number, string, or false.

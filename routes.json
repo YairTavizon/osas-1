@@ -1,0 +1,15 @@
+{
+    "auth":
+    [
+      "/dash"
+    ],
+    "exclude": 
+    [
+      "/perfil/somewhere"
+    ],
+    "public": 
+    [
+      "/",
+      "/login"
+    ]
+}
