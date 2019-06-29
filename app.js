@@ -7,6 +7,7 @@ const bodyParser   = require('body-parser');
 const mongoose     = require('mongoose');
 const path            = require('path');
 const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
 const cookieParser    = require('cookie-parser');
 const logger          = require('morgan');
 
