@@ -37,4 +37,24 @@ router.get('/eventos', function(req, res, next) {
   });
 });
 
+router.get('/ruta', function(req, res, next) {
+  res.render('index', { 
+    title: 'Ruta', 
+    csrfToken: req.csrfToken(), 
+    content: 'ruta'
+  });
+});
+
+router.get('/ruta/share', function(req, res, next) {
+  const baseUrl = "http"+(req.headers.host == "localhost:3000" ? "" : "s")+"://" +req.headers.host;
+  res.render('index', { 
+    title: 'Seguimiento', 
+    csrfToken: req.csrfToken(), 
+    content: 'tracking',
+    baseUrl: baseUrl,
+    user: req.user,
+    api_key: process.env.GOOGLE_MAPS_API_KEY
+  });
+});
+
 module.exports = router;

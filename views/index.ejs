@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/maps/google.maps.css" rel="stylesheet">
     <link href="/css/responsive/responsive.css" rel="stylesheet">
 
     <title><%= title %></title>
@@ -30,6 +31,14 @@
 
     <% if(content == "eventos") { %>
       <%- include('./partials/eventos/eventos'); -%>
+    <% } %>
+
+    <% if(content == "tracking") { %>
+      <%- include('./partials/tracking/tracking'); -%>
+    <% } %>
+
+    <% if(content == "ruta") { %>
+      <%- include('./partials/ruta/ruta'); -%>
     <% } %>
 
     <!-- ****** Footer Area End ****** -->

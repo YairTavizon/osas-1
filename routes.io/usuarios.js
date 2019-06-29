@@ -1,44 +1,32 @@
+const Usuario = require('../models/Usuario');
+const ObjectId = require('mongoose').Types.ObjectId; 
+
 module.exports = function (app, io) {
 
-	/*GET MESSAGE*/
-	app.get('/messages', (req, res) => {
-	  Message.find({},(err, messages)=> {
-	  	if(err)
-	      res.send(err);
-	    res.send(messages);
-	  })
-	});
+	app.post('/tracking/rutaTrack', async (req, res) => {
+		if(req.isAuthenticated()){
+			try{
+				var pos = {
+					lat: req.body.lat,
+					lng: req.body.lng
+				  };
+				await	Usuario.findOneAndUpdate(
+					{_id: new ObjectId(req.user._id), provider: req.user.provider},
+					{$set : {coordUsuario: pos}},
+					{runValidators: true , new: true}
+				)
 
-	/*GET MESSAGE BY USER*/
-	app.get('/messages/:user', (req, res) => {
-	  var user = req.params.user;
-	  Message.find({name: user},(err, messages)=> {
-	    res.send(messages);
-	  })
+				io.emit("rutaTrack", req.body);
+				res.sendStatus(200);
+			}
+			catch (error){
+				console.log('error',error);
+				return res.sendStatus(500);
+			}
+		}
+		else{
+			res.sendStatus(304);
+		}
 	})
 
-
-	/*Socket IO Incomming Data*/
-	app.post('/messages', async (req, res) => {
-	  try{
-	    var message = new Message(req.body);
-
-	    var savedMessage = await message.save()
-	      console.log('saved');
-
-	    var censored = await Message.findOne({message:'badword'});
-	      if(censored)
-	        await Message.remove({_id: censored.id})
-	      else
-	        io.emit('message', req.body);
-	      res.sendStatus(200);
-	  }
-	  catch (error){
-	    res.sendStatus(500);
-	    return console.log('error',error);
-	  }
-	  finally{
-	    console.log('Message Posted')
-	  }
-	})
 };

@@ -1,0 +1,10 @@
+/* Google Maps */
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+#map-tracking {
+  height: 100vh;
+  width: 100%;
+}

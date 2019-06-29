@@ -1,0 +1,56 @@
+<!-- ***** Header Area Start ***** -->
+<header class="header_area" id="header">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100">
+                    <nav class="h-100 navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="/"><img src="/img/core-img/logo.png" alt=""></a>
+                        <!-- Nav -->
+                    <div class="collapse navbar-collapse" id="dorneNav">
+                    </div>                            
+                    </nav>
+                </div>
+            </div>
+        </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<div id="map-tracking"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+   socket.on('rutaTrack', addMessages)
+
+   function addMessages(message){
+    if(message.id != '<%= user._id %>'){
+      setUpdateMarker({
+        lat: Number(message.lat),
+        lng: Number(message.lng)
+      });
+    }
+
+   }
+
+   function getMessages(){ 
+    /*
+    $.get('http://localhost:3000/messages', (data) => {
+      data.forEach(addMessages);
+    })
+    */
+   }
+
+   function sendPosition(location){
+    var pos = {
+        lat: location.lat,
+        lng: location.lng,
+        id: '<%= user._id %>'
+      };
+     $.post('<%= baseUrl %>/tracking/rutaTrack/?_csrf=<%= csrfToken %>', pos)
+   }
+
+</script>
+
+<script src="/js/maps/google.maps.tracking.multiple.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap"></script>
