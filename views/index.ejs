@@ -18,7 +18,11 @@
     </div>
 
     <% if(content == "index") { %>
-      <%- include('./partials/burbujas/burbujas'); -%>
+      <%- include('./partials/burbujas/index'); -%>
+    <% } %>
+
+    <% if(content == "burbujas") { %>
+      <%- include('./partials/burbujas/intereses'); -%>
     <% } %>
 
     <% if(content == "login") { %>

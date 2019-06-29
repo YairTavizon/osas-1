@@ -338,12 +338,12 @@ li {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(14, 2, 35, 0.5);
+    background-color: #aa0160;
     z-index: -1;
 }
 
 .bg-overlay-9:after {
-    background-color: rgba(14, 2, 35, 0.9);
+    background-color: #aa0160;
 }
 
 .bg-gray {
@@ -459,7 +459,7 @@ li {
 }
 
 .sticky .header_area {
-    background-color: rgba(14, 2, 35, 0.9);
+    background-color: rgba(202, 39, 148, 0.9);
     height: 80px;
     z-index: 9999;
     border-bottom: 1px solid transparent;

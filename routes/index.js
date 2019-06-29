@@ -13,6 +13,15 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/burbujas', function(req, res, next) {
+  res.render('index', { 
+    title: 'Burbujas', 
+    csrfToken: req.csrfToken(), 
+    content: 'burbujas'
+  });
+});
+
+
 router.get('/login', function(req, res, next) {
   res.render('index', { 
     title: 'Login', 
