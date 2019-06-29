@@ -12,12 +12,12 @@
 
 /* Import CSS */
 
-@import '/css/bootstrap/bootstrap.min.css';
-@import '/css/others/animate.css';
-@import '/css/others/magnific-popup.css';
-@import '/css/others/owl.carousel.min.css';
-@import '/css/others/font-awesome.min.css';
-@import '/css/others/pe-icon-7-stroke.css';
+@import 'css/bootstrap/bootstrap.min.css';
+@import 'css/others/animate.css';
+@import 'css/others/magnific-popup.css';
+@import 'css/others/owl.carousel.min.css';
+@import 'css/others/font-awesome.min.css';
+@import 'css/others/pe-icon-7-stroke.css';
 
 /* Base CSS */
 
